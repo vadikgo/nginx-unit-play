@@ -4,13 +4,14 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "512"
+    vb.memory = "1024"
     vb.gui = false
     vb.linked_clone = true
   end
 
   config.vm.hostname = "unit"
   config.vm.network :forwarded_port, guest: 8800, host: 8800
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt update

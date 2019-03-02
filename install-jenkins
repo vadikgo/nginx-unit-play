@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo useradd jenkins
+sudo -u jenkins curl -L http://mirrors.jenkins.io/war-stable/latest/jenkins.war -o /home/jenkins/jenkins.war
+
+sudo curl -X PUT --data-binary @jenkins.config --unix-socket /var/run/control.unit.sock http://localhost/config
